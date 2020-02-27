@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.cheerfun</groupId>
-    <artifactId>hamul</artifactId>
+    <artifactId>hamal</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
 
     <modules>
-        <module>hamul-client</module>
-        <module>hamul-server</module>
+        <module>hamal-client</module>
+        <module>hamal-server</module>
     </modules>
 
 
