@@ -14,6 +14,6 @@ public interface DataMsgBusManager {
 
     void removeAllSubscribe(Object bean);
 
-    void removeSubscribe(Object bean, DataMsg dataMsg);
+    void removeSubscribe(Object bean,  Class<? extends DataMsg> dataMsg);
 
 }

@@ -22,6 +22,7 @@ public abstract class AbstractDataMsgBusManager implements DataMsgBusManager {
 
     /**
      * 事件 -->事件接收者
+     * fixme 是否需要考虑并发问题
      */
     private Map<Class<? extends DataMsg>, List<IReceiverInvoke>> receiverDefinitionMap = Maps.newHashMap();
 
@@ -29,8 +30,9 @@ public abstract class AbstractDataMsgBusManager implements DataMsgBusManager {
     /**
      * 注册事件接收者
      *
-     * @param bean
+     * @param bean 接收者
      */
+
     @Override
     public void registerReceiver(Object bean) {
         Class<?> aClass = bean.getClass();
@@ -39,9 +41,9 @@ public abstract class AbstractDataMsgBusManager implements DataMsgBusManager {
                 ReceiverDefinition receiverDefinition = ReceiverDefinition.generateInvoker(bean, method);
                 try {
                     doRegister(receiverDefinition.getEventClz(), ProxyBeanFactory.createEnhanceReceiverInvoker(receiverDefinition));
-                    log.info("事件注册成功 : " + bean.getClass().getSimpleName());
+                    log.info("订阅注册成功 : " + bean.getClass().getSimpleName());
                 } catch (Exception e) {
-                    log.error("事件注册失败 : " + bean.getClass().getSimpleName(), e);
+                    log.error("订阅注册失败 : " + bean.getClass().getSimpleName(), e);
                     throw new RuntimeException(e);
                 }
             }
@@ -58,14 +60,37 @@ public abstract class AbstractDataMsgBusManager implements DataMsgBusManager {
         }
     }
 
+    @Override
     public void removeAllSubscribe(Object bean) {
-        //todo
+        Class<?> aClass = bean.getClass();
+        ReflectionUtils.doWithMethods(aClass,method -> {
+            if (method.isAnnotationPresent(ReceiverMethod.class)) {
+                ReceiverDefinition receiverDefinition = ReceiverDefinition.generateInvoker(bean, method);
+                try {
+                    doUnSubscribe(receiverDefinition.getEventClz(), ProxyBeanFactory.createEnhanceReceiverInvoker(receiverDefinition));
+                    log.info("订阅取消成功 : " + bean.getClass().getSimpleName());
+                } catch (Exception e) {
+                    log.error("订阅取消失败 : " + bean.getClass().getSimpleName(), e);
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 
-    public void removeSubscribe(Object bean, DataMsg dataMsg) {
-        //todo
+    @Override
+    public void removeSubscribe(Object bean, Class<? extends DataMsg> dataMsg) {
+        try {
+            //doUnSubscribe(dataMsg, ProxyBeanFactory.createEnhanceReceiverInvoker(ReceiverDefinition.generateInvoker(bean, method)));
+            log.info("订阅取消成功 : " + bean.getClass().getSimpleName());
+        } catch (Exception e) {
+            log.error("订阅取消失败 : " + bean.getClass().getSimpleName(), e);
+            throw new RuntimeException(e);
+        }
     }
 
+    private void doUnSubscribe(Class<? extends DataMsg> eventClz, IReceiverInvoke enhanceReceiverInvoker){
+
+    }
 
     @Override
     public int hashCode() {

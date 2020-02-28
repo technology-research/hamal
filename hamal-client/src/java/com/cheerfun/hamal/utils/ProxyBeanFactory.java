@@ -1,6 +1,5 @@
 package com.cheerfun.hamal.utils;
 
-import com.cheerfun.hamal.annotation.ReceiverMethod;
 import com.cheerfun.hamal.msg.DataMsg;
 import com.cheerfun.hamal.msg.IReceiverInvoke;
 import com.cheerfun.hamal.msg.ReceiverDefinition;
@@ -19,9 +18,9 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class ProxyBeanFactory {
 
-    private static final ClassPool classPool = ClassPool.getDefault();
+    private static final ClassPool CLASS_POOL = ClassPool.getDefault();
 
-    private static final AtomicInteger index = new AtomicInteger(0);
+    private static final AtomicInteger INDEX = new AtomicInteger(0);
 
     @SuppressWarnings("unchecked")
     public static IReceiverInvoke createEnhanceReceiverInvoker(ReceiverDefinition definition) throws Exception {
@@ -30,34 +29,34 @@ public class ProxyBeanFactory {
         String methodName = method.getName();
         Class<?> beanClazz = bean.getClass();
 
-        CtClass enhanceClazz = buildCtClass(IReceiverInvoke.class);
+        CtClass enhanceClazz = buildCtClass();
 
-        CtField ctField = new CtField(classPool.get(beanClazz.getCanonicalName()), "bean", enhanceClazz);
+        CtField ctField = new CtField(CLASS_POOL.get(beanClazz.getCanonicalName()), "bean", enhanceClazz);
         ctField.setModifiers(Modifier.PRIVATE);
         enhanceClazz.addField(ctField);
 
         String[] parameters = new String[]{beanClazz.getCanonicalName()};
-        CtConstructor ctConstructor = new CtConstructor(classPool.get(parameters), enhanceClazz);
+        CtConstructor ctConstructor = new CtConstructor(CLASS_POOL.get(parameters), enhanceClazz);
         ctConstructor.setBody("{this.bean = $1;}");
         ctConstructor.setModifiers(Modifier.PUBLIC);
         enhanceClazz.addConstructor(ctConstructor);
 
         // 构建 invoke 方法
-        CtMethod ctMethod = new CtMethod(classPool.get(void.class.getCanonicalName())
-                , "invoke", classPool.get(new String[]{DataMsg.class.getCanonicalName()})
+        CtMethod ctMethod = new CtMethod(CLASS_POOL.get(void.class.getCanonicalName())
+                , "invoke", CLASS_POOL.get(new String[]{DataMsg.class.getCanonicalName()})
                 , enhanceClazz);
         ctMethod.setModifiers(Modifier.PUBLIC);
         StringBuilder methodBuilder = new StringBuilder();
         methodBuilder.append("{");
-        methodBuilder.append("bean." + methodName + "((" + definition.getEventClz().getCanonicalName() + ") $1);");
+        methodBuilder.append("bean.").append(methodName).append("((").append(definition.getEventClz().getCanonicalName()).append(") $1);");
         methodBuilder.append("}");
         System.out.println(methodBuilder.toString());
         ctMethod.setBody(methodBuilder.toString());
         enhanceClazz.addMethod(ctMethod);
 
         // 构建 equals() 方法
-        CtMethod ctEqualsMethod = new CtMethod(classPool.get(boolean.class.getCanonicalName())
-                , "equals", classPool.get(new String[]{Object.class.getCanonicalName()})
+        CtMethod ctEqualsMethod = new CtMethod(CLASS_POOL.get(boolean.class.getCanonicalName())
+                , "equals", CLASS_POOL.get(new String[]{Object.class.getCanonicalName()})
                 , enhanceClazz);
         ctEqualsMethod.setModifiers(Modifier.PUBLIC);
         methodBuilder = new StringBuilder();
@@ -69,8 +68,8 @@ public class ProxyBeanFactory {
         enhanceClazz.addMethod(ctEqualsMethod);
 
         // 构建 hashcode() 方法
-        CtMethod ctHashCodeMethod = new CtMethod(classPool.get(int.class.getCanonicalName())
-                , "hashCode", classPool.get(new String[]{})
+        CtMethod ctHashCodeMethod = new CtMethod(CLASS_POOL.get(int.class.getCanonicalName())
+                , "hashCode", CLASS_POOL.get(new String[]{})
                 , enhanceClazz);
         ctHashCodeMethod.setModifiers(Modifier.PUBLIC);
         methodBuilder = new StringBuilder();
@@ -81,8 +80,8 @@ public class ProxyBeanFactory {
         enhanceClazz.addMethod(ctHashCodeMethod);
 
         // 构建 getBean() 方法
-        CtMethod ctGetBeanMethod = new CtMethod(classPool.get(Object.class.getCanonicalName())
-                , "getBean", classPool.get(new String[]{})
+        CtMethod ctGetBeanMethod = new CtMethod(CLASS_POOL.get(Object.class.getCanonicalName())
+                , "getBean", CLASS_POOL.get(new String[]{})
                 , enhanceClazz);
         ctGetBeanMethod.setModifiers(Modifier.PUBLIC);
         methodBuilder = new StringBuilder();
@@ -92,20 +91,16 @@ public class ProxyBeanFactory {
         ctGetBeanMethod.setBody(methodBuilder.toString());
         enhanceClazz.addMethod(ctGetBeanMethod);
 
-        //  ctClass ---> Class
-        Class rClz = enhanceClazz.toClass();
-
         // debug一下
         //enhanceClazz.writeFile("/Volumes/file/project/hamal/hamal-client/src/java/com/cheerfun/hamal/utils/");
 
-        Constructor<?> constructor = rClz.getConstructor(beanClazz);
-        IReceiverInvoke result = (IReceiverInvoke) constructor.newInstance(bean);
-        return result;
+        Constructor<?> constructor = enhanceClazz.toClass().getConstructor(beanClazz);
+        return (IReceiverInvoke) constructor.newInstance(bean);
     }
 
-    private static CtClass buildCtClass(Class<?> clazz) throws Exception {
-        CtClass ctClass = classPool.makeClass(clazz.getSimpleName() + "Enhance" + index.incrementAndGet());
-        ctClass.addInterface(classPool.get(clazz.getCanonicalName()));
+    private static CtClass buildCtClass() throws Exception {
+        CtClass ctClass = CLASS_POOL.makeClass(IReceiverInvoke.class.getSimpleName() + "Enhance" + INDEX.incrementAndGet());
+        ctClass.addInterface(CLASS_POOL.get(IReceiverInvoke.class.getCanonicalName()));
         return ctClass;
     }
 
