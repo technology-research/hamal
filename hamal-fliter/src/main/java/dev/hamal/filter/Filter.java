@@ -1,4 +1,4 @@
-package com.hamal.filter;
+package dev.hamal.filter;
 
 /**
  * @author lfy

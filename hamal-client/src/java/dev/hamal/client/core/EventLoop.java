@@ -1,4 +1,4 @@
-package com.hamal.core;
+package dev.hamal.client.core;
 
 /**
  * @author lfy

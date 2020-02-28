@@ -9,6 +9,7 @@ import java.util.List;
 
 /**
  * 数据接收者封装对象
+ *
  * @author lfy
  * @date 2020-02-27 20:27
  */
@@ -47,7 +48,6 @@ public class ReceiverDefinition implements IReceiverInvoke {
         ReflectionUtils.makeAccessible(method);
         ReflectionUtils.invokeMethod(method, bean, dataMsg);
     }
-
 
 
     @SuppressWarnings("unchecked")

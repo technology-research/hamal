@@ -19,6 +19,8 @@
         <module>hamal-server</module>
         <module>hamal-entry</module>
         <module>hamal-common</module>
+        <module>hamal-engine</module>
+        <module>hamal-fliter</module>
     </modules>
 
     <profiles>
