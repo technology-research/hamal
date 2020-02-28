@@ -1,6 +1,6 @@
-package com.cheerfun.hamal.config;
+package com.hamal.entry.config;
 
-import com.cheerfun.hamal.msg.DataMsgBusManager;
+import com.hamal.msg.DataMsgBusManager;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessorAdapter;
 import org.springframework.context.ApplicationContext;

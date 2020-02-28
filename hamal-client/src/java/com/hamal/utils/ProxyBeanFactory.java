@@ -1,8 +1,8 @@
-package com.cheerfun.hamal.utils;
+package com.hamal.utils;
 
-import com.cheerfun.hamal.msg.DataMsg;
-import com.cheerfun.hamal.msg.IReceiverInvoke;
-import com.cheerfun.hamal.msg.ReceiverDefinition;
+import com.hamal.msg.DataMsg;
+import com.hamal.msg.IReceiverInvoke;
+import com.hamal.msg.ReceiverDefinition;
 import javassist.*;
 
 import java.lang.reflect.Constructor;

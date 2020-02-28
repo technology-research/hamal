@@ -1,7 +1,7 @@
-package com.cheerfun.hamal.msg;
+package com.hamal.msg;
 
-import com.cheerfun.hamal.annotation.ReceiverMethod;
-import com.cheerfun.hamal.utils.ProxyBeanFactory;
+import com.hamal.annotation.ReceiverMethod;
+import com.hamal.utils.ProxyBeanFactory;
 import com.google.common.collect.Maps;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;

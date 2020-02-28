@@ -1,4 +1,4 @@
-package com.cheerfun.hamal.config;
+package com.hamal.entry.config;
 
 import org.springframework.beans.factory.xml.NamespaceHandlerSupport;
 

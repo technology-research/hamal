@@ -1,6 +1,6 @@
-package com.cheerfun.hamal.utils;
+package com.hamal.utils;
 
-import com.cheerfun.hamal.annotation.ReceiverMethod;
+import com.hamal.annotation.ReceiverMethod;
 
 /**
  * @author lfy

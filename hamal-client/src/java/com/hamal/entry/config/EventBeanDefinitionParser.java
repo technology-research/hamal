@@ -1,8 +1,8 @@
-package com.cheerfun.hamal.config;
+package com.hamal.entry.config;
 
 
-import com.cheerfun.hamal.annotation.ReceiverMethod;
-import com.cheerfun.hamal.msg.DataMsgBusManager;
+import com.hamal.msg.DataMsgBusManager;
+import com.hamal.annotation.ReceiverMethod;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionBuilder;
