@@ -1,6 +1,7 @@
-package com.hamal.entry.config;
+package com.hamal.config;
 
 import com.hamal.msg.DataMsgBusManager;
+
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessorAdapter;
 import org.springframework.context.ApplicationContext;

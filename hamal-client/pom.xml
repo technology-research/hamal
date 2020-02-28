@@ -28,6 +28,12 @@
             <groupId>javassist</groupId>
             <artifactId>javassist</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.cheerfun</groupId>
+            <artifactId>hamal-entry</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

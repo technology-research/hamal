@@ -1,5 +1,7 @@
-package com.cheerfun.hamal.core;
+package com.hamal.core;
 
+
+import com.hamal.entry.data.AbstractDataInput;
 
 /**
  * 数据仓库
@@ -8,6 +10,6 @@ package com.cheerfun.hamal.core;
  **/
 public class DataRepository {
 
-
+    
 
 }

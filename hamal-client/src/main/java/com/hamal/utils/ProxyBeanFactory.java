@@ -1,8 +1,9 @@
 package com.hamal.utils;
 
+import com.hamal.msg.ReceiverDefinition;
 import com.hamal.msg.DataMsg;
 import com.hamal.msg.IReceiverInvoke;
-import com.hamal.msg.ReceiverDefinition;
+
 import javassist.*;
 
 import java.lang.reflect.Constructor;

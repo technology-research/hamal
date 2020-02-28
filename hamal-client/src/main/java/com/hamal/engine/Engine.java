@@ -1,4 +1,4 @@
-package com.cheerfun.hamal.engine;
+package com.hamal.engine;
 
 /**
  * 规则解析引擎

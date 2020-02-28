@@ -1,4 +1,4 @@
-package com.cheerfun.hamal.core;
+package com.hamal.core;
 
 /**
  * @author lfy

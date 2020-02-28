@@ -1,4 +1,4 @@
-package com.hamal.entry.config;
+package com.hamal.config;
 
 
 import com.hamal.msg.DataMsgBusManager;
