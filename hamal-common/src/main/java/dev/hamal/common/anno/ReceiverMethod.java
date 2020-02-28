@@ -1,4 +1,4 @@
-package com.hamal.annotation;
+package dev.hamal.common.anno;
 
 import java.lang.annotation.*;
 

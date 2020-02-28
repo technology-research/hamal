@@ -1,4 +1,4 @@
-package com.hamal.msg;
+package dev.hamal.common.event;
 
 /**
  * @author lfy

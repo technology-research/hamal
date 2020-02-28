@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.cheerfun</groupId>
+    <groupId>dev.technology</groupId>
     <artifactId>hamal</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
@@ -18,6 +18,7 @@
         <module>hamal-client</module>
         <module>hamal-server</module>
         <module>hamal-entry</module>
+        <module>hamal-common</module>
     </modules>
 
     <profiles>
@@ -34,6 +35,7 @@
         </profile>
     </profiles>
     <properties>
+        <hamal.version>1.0.0</hamal.version>
         <guava.version>28.0-jre</guava.version>
         <commons.io.version>2.4</commons.io.version>
         <commons.lang3.version>3.9</commons.lang3.version>
@@ -44,27 +46,30 @@
         <jctoos.version>2.1.1</jctoos.version>
     </properties>
 
-    <!--通用依赖配置-->
-    <dependencies>
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jctools</groupId>
-            <artifactId>jctools-core</artifactId>
-        </dependency>
-    </dependencies>
     <dependencyManagement>
         <dependencies>
+            <!--二方包-->
+            <dependency>
+                <groupId>dev.technology</groupId>
+                <artifactId>hamal-common</artifactId>
+                <version>${hamal.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.technology</groupId>
+                <artifactId>hamal-entry</artifactId>
+                <version>${hamal.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.technology</groupId>
+                <artifactId>hamal-server</artifactId>
+                <version>${hamal.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>dev.technology</groupId>
+                <artifactId>hamal-client</artifactId>
+                <version>${hamal.version}</version>
+            </dependency>
+            <!--三方包-->
             <!--谷歌guava工具包-->
             <dependency>
                 <groupId>com.google.guava</groupId>
@@ -93,6 +98,17 @@
                 <groupId>javassist</groupId>
                 <artifactId>javassist</artifactId>
                 <version>${javassist.version}</version>
+            </dependency>
+            <!--spring所需-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-core</artifactId>
+                <version>${spring-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring-framework.version}</version>
             </dependency>
             <!--数据入口所需rocketmq、kafka客户端-->
             <dependency>

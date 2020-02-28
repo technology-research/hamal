@@ -1,8 +1,8 @@
-package com.hamal.msg;
+package dev.hamal.common.event;
 
-import com.hamal.annotation.ReceiverMethod;
-import com.hamal.utils.ProxyBeanFactory;
 import com.google.common.collect.Maps;
+import dev.hamal.common.anno.ReceiverMethod;
+import dev.hamal.common.utils.ProxyBeanFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
@@ -63,7 +63,7 @@ public abstract class AbstractDataMsgBusManager implements DataMsgBusManager {
     @Override
     public void removeAllSubscribe(Object bean) {
         Class<?> aClass = bean.getClass();
-        ReflectionUtils.doWithMethods(aClass,method -> {
+        ReflectionUtils.doWithMethods(aClass, method -> {
             if (method.isAnnotationPresent(ReceiverMethod.class)) {
                 ReceiverDefinition receiverDefinition = ReceiverDefinition.generateInvoker(bean, method);
                 try {
@@ -88,7 +88,7 @@ public abstract class AbstractDataMsgBusManager implements DataMsgBusManager {
         }
     }
 
-    private void doUnSubscribe(Class<? extends DataMsg> eventClz, IReceiverInvoke enhanceReceiverInvoker){
+    private void doUnSubscribe(Class<? extends DataMsg> eventClz, IReceiverInvoke enhanceReceiverInvoker) {
 
     }
 

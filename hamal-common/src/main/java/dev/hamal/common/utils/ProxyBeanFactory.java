@@ -1,9 +1,13 @@
-package com.hamal.utils;
+package dev.hamal.common.utils;
 
-import com.hamal.msg.DataMsg;
-import com.hamal.msg.IReceiverInvoke;
-import com.hamal.msg.ReceiverDefinition;
-import javassist.*;
+import dev.hamal.common.event.DataMsg;
+import dev.hamal.common.event.IReceiverInvoke;
+import dev.hamal.common.event.ReceiverDefinition;
+import javassist.ClassPool;
+import javassist.CtClass;
+import javassist.CtConstructor;
+import javassist.CtField;
+import javassist.CtMethod;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;

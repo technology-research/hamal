@@ -1,4 +1,4 @@
-package com.hamal.entry.data;
+package dev.hamal.entry.data;
 
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;

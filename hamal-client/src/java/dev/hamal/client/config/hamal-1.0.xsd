@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<xsd.schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://www.cheerfun.com/event" xmlns="http://www.cheerfun.com/event"
+            elementFormDefault="qualified">
+
+    <xsd:element name="config">
+        <xsd:complexType>
+            <xsd:attribute name="base-package" type="xsd:string" use="required"/>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd.schema>

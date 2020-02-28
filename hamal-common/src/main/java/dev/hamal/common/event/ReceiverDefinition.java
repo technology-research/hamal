@@ -1,4 +1,4 @@
-package com.hamal.msg;
+package dev.hamal.common.event;
 
 import com.google.common.collect.Lists;
 import lombok.Data;

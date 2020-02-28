@@ -1,1 +1,1 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.hamal.entry.config.EntryAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=dev.hamal.entry.config.EntryAutoConfiguration

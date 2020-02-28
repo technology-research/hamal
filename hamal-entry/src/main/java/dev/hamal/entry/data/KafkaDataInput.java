@@ -1,4 +1,4 @@
-package com.hamal.entry.data;
+package dev.hamal.entry.data;
 
 import java.util.function.Consumer;
 
