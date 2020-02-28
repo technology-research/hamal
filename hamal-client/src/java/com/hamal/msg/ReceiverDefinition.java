@@ -1,4 +1,4 @@
-package com.cheerfun.hamal.msg;
+package com.hamal.msg;
 
 import com.google.common.collect.Lists;
 import lombok.Data;

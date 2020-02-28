@@ -37,4 +37,7 @@ dependency-reduced-pom.xml
 # exclude mainframer files
 mainframer
 .mainframer
+hamal-entry/target/**
+hamal-client/targer/**
+hamal-server/targer/**
 

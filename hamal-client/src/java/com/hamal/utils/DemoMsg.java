@@ -1,6 +1,6 @@
-package com.cheerfun.hamal.utils;
+package com.hamal.utils;
 
-import com.cheerfun.hamal.msg.DataMsg;
+import com.hamal.msg.DataMsg;
 
 /**
  * @author lfy

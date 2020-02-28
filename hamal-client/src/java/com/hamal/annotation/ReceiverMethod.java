@@ -1,4 +1,4 @@
-package com.cheerfun.hamal.annotation;
+package com.hamal.annotation;
 
 import java.lang.annotation.*;
 
