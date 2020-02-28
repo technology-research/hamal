@@ -1,7 +1,7 @@
-package com.hamal.entry.config;
+package dev.hamal.entry.config;
 
-import com.hamal.entry.data.KafkaDataInput;
-import com.hamal.entry.data.RocketMQDataInput;
+import dev.hamal.entry.data.KafkaDataInput;
+import dev.hamal.entry.data.RocketMQDataInput;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 
