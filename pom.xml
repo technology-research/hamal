@@ -14,6 +14,19 @@
         <module>hamal-server</module>
     </modules>
 
+    <profiles>
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <jar.source>1.8</jar.source>
+                <jar.target>1.8</jar.target>
+                <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
+            </properties>
+        </profile>
+    </profiles>
 
     <build>
         <plugins>
@@ -71,34 +84,5 @@
             </plugin>
         </plugins>
     </build>
-
-    <profiles>
-        <profile>
-            <id>default</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
-            <properties>
-                <jar.source>1.8</jar.source>
-                <jar.target>1.8</jar.target>
-                <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion>
-            </properties>
-        </profile>
-    </profiles>
-
-    <repositories>
-        <repository>
-            <id>maven-ali</id>
-            <url>http://maven.aliyun.com/nexus/content/groups/public//</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-            </snapshots>
-        </repository>
-    </repositories>
 
 </project>
