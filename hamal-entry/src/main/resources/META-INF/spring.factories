@@ -1,1 +1,4 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=dev.hamal.entry.config.EntryAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+             dev.hamal.entry.config.spi.DataExecutorAutoConfiguration,\
+             dev.hamal.entry.config.spi.DataConsumerAutoConfiguration,\
+             dev.hamal.entry.config.spi.DataEntryAutoConfiguration

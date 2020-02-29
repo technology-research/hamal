@@ -30,10 +30,10 @@
         </dependency>
 
         <dependency>
-            <groupId>com.cheerfun</groupId>
+            <groupId>dev.technology</groupId>
             <artifactId>hamal-entry</artifactId>
-            <version>1.0.0</version>
         </dependency>
+
     </dependencies>
 
     <build>

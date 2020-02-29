@@ -1,5 +1,6 @@
 package dev.hamal.client.config;
 
+import dev.hamal.common.event.DataMsgBusManager;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.InstantiationAwareBeanPostProcessorAdapter;
 import org.springframework.context.ApplicationContext;

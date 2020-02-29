@@ -1,4 +1,4 @@
-package dev.hamal.entry.data;
+package dev.hamal.entry.input;
 
 import java.util.function.Consumer;
 
@@ -6,14 +6,14 @@ import java.util.function.Consumer;
  * @fileName: DataInput.java
  * @description: 数据入口
  * @author: by echo huang
- * @date: 2020-02-28 19:56
+ * @date: 2020-02-29 16:45
  */
 public interface DataInput<T> {
     /**
-     * 消费消息
+     * 获取数据
      *
      * @param dataConsumer 数据消费者
-     * @return 解析后数据
+     * @see DefaultDataInput,KafkaDataInput,AbstractDataInput<T>
      */
-    void consume(Consumer<T> dataConsumer);
+    void consumer(Consumer<T> dataConsumer);
 }

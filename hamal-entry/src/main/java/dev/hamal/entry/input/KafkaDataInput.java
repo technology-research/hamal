@@ -1,4 +1,4 @@
-package dev.hamal.entry.data;
+package dev.hamal.entry.input;
 
 import java.util.function.Consumer;
 
@@ -8,9 +8,11 @@ import java.util.function.Consumer;
  * @author: by echo huang
  * @date: 2020-02-28 20:25
  */
-public class KafkaDataInput implements DataInput<String>{
+public class KafkaDataInput extends AbstractDataInput<String>{
+
 
     @Override
-    public void consume(Consumer<String> dataConsumer) {
+    public void doConsumer(Consumer<String> dataConsumer) {
+
     }
 }
