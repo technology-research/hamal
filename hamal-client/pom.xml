@@ -34,6 +34,7 @@
             <artifactId>hamal-entry</artifactId>
         </dependency>
 
+
     </dependencies>
 
     <build>
